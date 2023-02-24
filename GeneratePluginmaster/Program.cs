@@ -44,8 +44,9 @@ internal class Program
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
         });
-        Console.WriteLine(mf);
-        File.WriteAllText($"ment.json", mf);
+        var p = Path.Combine(folderPath, $"ment.json");
+        Console.WriteLine($"Writing to: {p}");
+        File.WriteAllText(p, mf);
     }
 
     static PluginManifest? ProcessPlugin(string path)
