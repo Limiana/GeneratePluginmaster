@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33318.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratePluginmaster", "GeneratePluginmaster\GeneratePluginmaster.csproj", "{93D356E6-4657-4363-945C-C5D9B5C3294C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93D356E6-4657-4363-945C-C5D9B5C3294C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D356E6-4657-4363-945C-C5D9B5C3294C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D356E6-4657-4363-945C-C5D9B5C3294C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D356E6-4657-4363-945C-C5D9B5C3294C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {254648B5-D34D-4088-B843-AA577C2C58D8}
+	EndGlobalSection
+EndGlobal
