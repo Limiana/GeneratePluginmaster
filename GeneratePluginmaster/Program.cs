@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System.Threading.Tasks.Sources;
 
 internal class Program
 {
@@ -99,7 +100,18 @@ internal class Program
                 var num = 0;
                 foreach(var f in Directory.GetFiles("/var/log/nginx/", "access.log.*"))
                 {
-                    var data = File.ReadAllText(f);
+                    string data;
+                    if (f.EndsWith(".gz"))
+                    {
+                        using var fstream = File.OpenRead(f);
+                        using var gstream = new GZipStream(fstream, CompressionMode.Decompress);
+                        using var sr = new StreamReader(gstream);
+                        data = sr.ReadToEnd();
+                    }
+                    else
+                    {
+                        data = File.ReadAllText(f);
+                    }
                     num += data.Split($"{new DirectoryInfo(path).Name}/latest.zip").Length - 1;
                     num += data.Split($"{new DirectoryInfo(path).Name}/Testing/latest.zip").Length - 1;
                 }
