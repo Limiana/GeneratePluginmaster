@@ -83,11 +83,11 @@ internal class Program
                 {
                     manifest.DownloadLinkTesting = $"{BaseUrl}{new DirectoryInfo(path).Name}/Testing/latest.zip";
                     manifest.TestingAssemblyVersion = testingManifest.AssemblyVersion;
+                    manifest.LastUpdate = testingManifest.LastUpdate;
                 }
                 else
                 {
                     Console.WriteLine("Could not get testing plugin manifest");
-                    manifest.DownloadLinkTesting = manifest.DownloadLinkInstall;
                 }
             }
             else
@@ -141,6 +141,7 @@ internal class Program
                                     Console.WriteLine($"Found plugin: {entry.FullName}, loading {jsonF}");
                                     using var reader = new StreamReader(zip.Entries.First(x => x.FullName == jsonF).Open());
                                     var json = JsonConvert.DeserializeObject<PluginManifest>(reader.ReadToEnd());
+                                    json.LastUpdate = entry.LastWriteTime.ToUnixTimeSeconds();
                                     return json;
                                 }
                             }
