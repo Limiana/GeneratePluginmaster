@@ -94,6 +94,21 @@ internal class Program
             {
                 Console.WriteLine("No testing version for this plugin");
             }
+            try
+            {
+                var num = 0;
+                foreach(var f in Directory.GetFiles("/var/log/nginx/", "access.log.*"))
+                {
+                    var data = File.ReadAllText(f);
+                    num += data.Split($"{new DirectoryInfo(path).Name}/latest.zip").Length - 1;
+                    num += data.Split($"{new DirectoryInfo(path).Name}/Testing/latest.zip").Length - 1;
+                }
+                manifest.DownloadCount = num;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Could not get download count: {e.Message}");
+            }
             return manifest;
         }
         catch(Exception e)
